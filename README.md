@@ -1,3 +1,6 @@
+# Note
+RST_PIN 0 (instead 15 from original)
+
 # ESP8266-MFRC522
 MFRC522 RFID module connected to ESP8266 (ESP-12) WiFi module
 
@@ -18,8 +21,8 @@ You have to install the Arduino IDE 1.6.4.
 ## define RFID module
 ```c
 #include "MFRC522.h"
-#define RST_PIN	15 // RST-PIN for RC522 - RFID - SPI - Modul GPIO15 
-#define SS_PIN	2  // SDA-PIN for RC522 - RFID - SPI - Modul GPIO2 
+#define RST_PIN	0 // RST-PIN for RC522 - RFID - SPI - ESP8266 GPIO0
+#define SS_PIN	2  // SDA-PIN for RC522 - RFID - SPI - ESP8266 GPIO2
 MFRC522 mfrc522(SS_PIN, RST_PIN);	// Create MFRC522 instance
 ```
 
@@ -34,7 +37,7 @@ void setup() {
 
 ## Read RFID tag
 ```c
-void loop() { 
+void loop() {
   // Look for new cards
   if ( ! mfrc522.PICC_IsNewCardPresent()) {
     delay(50);
